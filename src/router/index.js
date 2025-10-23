@@ -1,9 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import NotFound from '@/views/NotFound.vue'
-import EditorView from '@/views/EditorView.vue'
+import NewPostView from '@/views/NewPostView.vue'
 import PostListView from '@/views/PostListView.vue'
 import PostView from '@/views/PostView.vue'
+import AdminView from '@/views/AdminView.vue'
+import EditPostView from '@/views/EditPostView.vue'
 
 function keepDefaultView(to, from) {
   if (from.matched.length) {
@@ -22,9 +24,9 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: '/editor',
-      name: 'editor',
-      component: EditorView,
+      path: '/new',
+      name: 'new',
+      component: NewPostView,
     },
     {
       path: '/posts',
@@ -36,6 +38,17 @@ const router = createRouter({
       name: 'post',
       component: PostView,
       props: true,
+    },
+    {
+      path: '/post/edit/:id',
+      name: 'edit',
+      component: EditPostView,
+      props: true,
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: AdminView,
     },
     {
       path: '/:pathMatch(.*)*',

@@ -17,6 +17,7 @@ const getPost = async () => {
     }
 }
 getPost()
+const posteditpath = "/post/edit/" + props.id
 </script>
 
 <template>
@@ -25,6 +26,7 @@ getPost()
     <div>
         Author: {{ post.author }}
     </div>
+    <RouterLink :to="posteditpath">Edit</RouterLink>
 </div>
     <PostViewComponent :content="post.content"></PostViewComponent>
 </template>

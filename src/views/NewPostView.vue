@@ -9,8 +9,6 @@ const description = ref("");
 const content = ref('<p>Hello World!</p>');
 const errMsg = ref("");
 
-
-
 const onSave = async () => {
     try {
         const response = await axiosInstance.post("/api/articles", {

@@ -5,12 +5,10 @@ import HeaderComponent from './components/HeaderComponent.vue';
 
 <template>
   <HeaderComponent>
-    <h1 class="text-[30px]">MyApp</h1>
-    <nav class="text-[25px] flex justify-between w-[375px] [&>a]:text-inherit [&>a]:no-underline">
+    <h1 class="text-[30px]">Article Platform</h1>
+    <nav class="text-[25px] flex justify-between w-[200px] [&>a]:text-inherit [&>a]:no-underline">
       <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/posts">Posts</RouterLink>
       <RouterLink to="/new">New Post</RouterLink>
-      <RouterLink to="/admin">Admin</RouterLink>
     </nav>
   </HeaderComponent>
   <main class="m-[15px]">

@@ -2,18 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import NotFound from '@/views/NotFound.vue'
 import NewPostView from '@/views/NewPostView.vue'
-import PostListView from '@/views/PostListView.vue'
 import PostView from '@/views/PostView.vue'
 import AdminView from '@/views/AdminView.vue'
 import EditPostView from '@/views/EditPostView.vue'
-
-function keepDefaultView(to, from) {
-  if (from.matched.length) {
-    to.matched[0].components.default = from.matched[0].components.default;
-  } else {
-    to.matched[0].components.default = HomeView;
-  }
-}
 
 const router = createRouter({
   history: createWebHistory(),
@@ -27,11 +18,6 @@ const router = createRouter({
       path: '/new',
       name: 'new',
       component: NewPostView,
-    },
-    {
-      path: '/posts',
-      name: 'posts',
-      component: PostListView,
     },
     {
       path: '/post/:id',

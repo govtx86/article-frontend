@@ -2,6 +2,7 @@
 import PostViewComponent from '@/components/post/PostViewComponent.vue';
 import axiosInstance from '@/services/axios';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 const props = defineProps(['id']);
 
@@ -17,16 +18,34 @@ const getPost = async () => {
     }
 }
 getPost()
+
 const posteditpath = "/post/edit/" + props.id
+const onEdit = () => {
+    const router = useRouter()
+    router.push(posteditpath)
+}
+
+const onDelete = async () => {
+    try {
+        const response = await axiosInstance.delete("/api/articles/" + props.id)
+        console.log(response.data);
+    } catch (error) {
+        console.log(error);
+    }
+}
 </script>
 
 <template>
-<div>
-    <h1>{{ post.title }}</h1>
-    <div>
+    <div class="px-[50px]">
+        <h1>{{ post.title }}</h1>
+        <div class="float-right flex gap-3 border-0">
+    
+            <button @click="onEdit" type="button">Edit</button>
+            <button @click="onDelete" type="button">Delete</button>
+        </div>
+    <h3>
         Author: {{ post.author }}
-    </div>
-    <RouterLink :to="posteditpath">Edit</RouterLink>
-</div>
+    </h3>
     <PostViewComponent :content="post.content"></PostViewComponent>
+</div>
 </template>

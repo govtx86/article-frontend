@@ -20,11 +20,6 @@ const getPost = async () => {
 getPost()
 
 const posteditpath = "/post/edit/" + props.id
-const onEdit = () => {
-    const router = useRouter()
-    router.push(posteditpath)
-}
-
 const onDelete = async () => {
     try {
         const response = await axiosInstance.delete("/api/articles/" + props.id)
@@ -40,8 +35,10 @@ const onDelete = async () => {
         <h1>{{ post.title }}</h1>
         <div class="float-right flex gap-3 border-0">
     
+        <RouterLink :to="posteditpath">
             <button @click="onEdit" type="button">Edit</button>
-            <button @click="onDelete" type="button">Delete</button>
+        </RouterLink>
+            <button type="button">Delete</button>
         </div>
     <h3>
         Author: {{ post.author }}
